@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function App() {
   const [numbers, setNumbers] = useState([])
-  const [value, setValue] = useState()
+  const [value, setValue] = useState(0)
   const execute = () => {
     const myArray = numbers.split(',').map(Number)
     for (let i = 0; i < myArray.length; i++) {
@@ -41,13 +41,14 @@ function App() {
           helperText="Enter the target num"
           onChange={e => setValue(e.target.value)}
         />
-        <Button
+        {numbers.length !== 0 && value !== 0 && <Button
           type="submit"
           onClick={execute}
           variant='contained'
         >
           Execute
-        </Button>
+        </Button>}
+
       </header>
       <div id='results'>
         <h3>Results</h3>
